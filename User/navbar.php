@@ -30,27 +30,36 @@ if (isset($_GET['logout'])) {
             background-color: #000;
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             color: #fff;
         }
-        .navbar-custom a {
-            color: #fff;
-            font-weight: 500;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
+
+        /* Style for each section of the navbar with extra spacing */
+        .navbar-left, .navbar-center, .navbar-right {
+            display: flex;
+            align-items: center;
         }
-        .navbar-custom a:hover {
-            color: #ddd;
+
+        /* Make space around the elements */
+        .navbar-left {
+            flex: 1;
+            justify-content: flex-start;
         }
-        .profile-btn {
-            font-size: 1rem;
-            font-weight: 500;
+
+        .navbar-center {
+            flex: 1;
+            justify-content: center;
         }
+
+        .navbar-right {
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        /* Username styling */
         .username {
             font-size: 1.2rem;
             font-weight: 600;
-            margin-right: 20px;
             color: #fff;
             background-color: #4CAF50;
             border-radius: 50px;
@@ -61,26 +70,46 @@ if (isset($_GET['logout'])) {
         .username:hover {
             background-color: #45a049;
         }
-        .logout-btn {
-            font-size: 1rem;
+
+        /* Navbar link styling */
+        .navbar-custom a {
+            color: #fff;
             font-weight: 500;
-            margin-left: auto;
+            margin: 0 10px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar-custom a:hover {
+            color: #ddd;
+        }
+
+        /* Logout button styling */
+        .logout-btn {
             color: red;
             cursor: pointer;
             text-decoration: none;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
 
     <div class="navbar-custom">
-        <!-- Display the logged-in user's username with a beautified style -->
-        <span class="username"><?php echo $_SESSION['username']; ?></span>
+        <!-- Left section with username -->
+        <div class="navbar-left">
+            <span class="username"><?php echo $_SESSION['username']; ?></span>
+        </div>
 
-        <a href="contacts.php" class="profile-btn">Contacts</a>
+        <!-- Center section with page links -->
+        <div class="navbar-center">
+            <a href="resource_library.php">Library</a>
+            <a href="contacts.php">Contacts</a>
+        </div>
 
-        <!-- Logout button on the right -->
-        <a href="?logout=true" class="logout-btn">Logout</a>
+        <!-- Right section with logout -->
+        <div class="navbar-right">
+            <a href="?logout=true" class="logout-btn">Logout</a>
+        </div>
     </div>
 
 </body>
